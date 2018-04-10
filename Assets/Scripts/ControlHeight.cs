@@ -18,7 +18,7 @@ public class ControlHeight : MonoBehaviour {
         }
 
 		if (_height < Screen.height) {
-			_myHeight.sizeDelta = new Vector2(Screen.width, Screen.height - 290);
+			_myHeight.sizeDelta = new Vector2(Screen.width, Screen.height - 200);
 		} else {
 			_myHeight.sizeDelta = new Vector2(Screen.width, _height);
 		}

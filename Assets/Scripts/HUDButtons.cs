@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class HUDButtons : MonoBehaviour {
 
+    [System.Serializable] //Para conseguir controlar pelo Inspector
+    public class Colorization
+    {
+        public string _name;
+        public Color _color;
+    }
+    public List<Colorization> _colors;
+
     public ControlHeight ct;
 
     public TopLabel _header;
@@ -13,6 +21,7 @@ public class HUDButtons : MonoBehaviour {
     public GameObject container_musicPlayer;
     public GameObject container_notes;
     public GameObject container_preferences;
+ 
 
     void Start ()
     {
@@ -22,11 +31,11 @@ public class HUDButtons : MonoBehaviour {
             container_galery.SetActive(false);
         if (container_contacts != null)
             container_contacts.SetActive(false);
-        if (container_musicPlayer != null)
+       if (container_musicPlayer != null)
             container_musicPlayer.SetActive(false);
         if (container_notes != null)
             container_notes.SetActive(false);
-        if (container_preferences != null)
+       if (container_preferences != null)
             container_preferences.SetActive(false);
     }
 
@@ -42,17 +51,28 @@ public class HUDButtons : MonoBehaviour {
                 container_contacts.SetActive(false);
                 break;
             case 1:
-
+                if (container_notes == null)
+                    return;
+                container_notes.SetActive(false);
                 break;
             case 2:
-
-                break;
+            
             case 3:
-
+             
                 break;
             case 4:
+               
+                break;
+            case 5:
 
                 break;
+            case 6:
+
+                break;
+            case 7:
+
+                break;
+
             default:
                 Debug.LogWarning("App inexistente.");
                 break;
@@ -65,8 +85,10 @@ public class HUDButtons : MonoBehaviour {
 
     public void Messages ()
     {
+
         _header.gameObject.SetActive(true);
         _header._name.text = "Mensagens";
+        _header._image.color = _colors.Find(x => x._name == "MessagesHeader_Color")._color;
         _header._backButton.onClick.RemoveAllListeners();
         _header._backButton.onClick.AddListener(delegate {
             CloseApp(0);
@@ -74,7 +96,7 @@ public class HUDButtons : MonoBehaviour {
 
         if (container_contacts == null)
             return;
-
+        //Debug.LogWarning("Não foi encontrado nenhum objeto no inspector do messagens");
         container_contacts.SetActive(true);
 
         ct.ChangeContactsHeight();
@@ -114,14 +136,15 @@ public class HUDButtons : MonoBehaviour {
     {
         _header.gameObject.SetActive(true);
         _header._name.text = "Notas";
+        _header._image.color = _colors.Find(x => x._name == "NotesHeader_Color")._color;
         _header._backButton.onClick.RemoveAllListeners();
         _header._backButton.onClick.AddListener(delegate {
             CloseApp(1);
         });
 
         if (container_notes == null)
-            return;
-
+                return;
+        
         container_notes.SetActive(true);
     }
 
@@ -139,6 +162,7 @@ public class HUDButtons : MonoBehaviour {
 
         container_galery.SetActive(true);
     }
+
 
     #endregion
 }
