@@ -101,11 +101,14 @@
     <Compile Include="Assets\Localization\Scripts\LeanPhraseNameAttribute.cs" />
     <Compile Include="Assets\Localization\Scripts\LeanTranslation.cs" />
     <Compile Include="Assets\Scripts\ControlHeight.cs" />
+    <Compile Include="Assets\Scripts\ControlHeightEmails.cs" />
+    <Compile Include="Assets\Scripts\EmailControl.cs" />
     <Compile Include="Assets\Scripts\HUDButtons.cs" />
     <Compile Include="Assets\Scripts\LocalizationManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MessageControl.cs" />
     <Compile Include="Assets\Scripts\MessageText.cs" />
+    <Compile Include="Assets\Scripts\MusicPlayer.cs" />
     <Compile Include="Assets\Scripts\TopLabel.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

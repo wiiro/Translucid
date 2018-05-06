@@ -5,11 +5,10 @@ using UnityEngine;
 public class ControlHeight : MonoBehaviour {
 
     public RectTransform _myHeight;
-
     public RectTransform[] messages;
     float _height = 0;
 
-	public void ChangeMessagesHeight ()
+    public void ChangeMessagesHeight ()
     {
 		_height = 0;
 		for (int i = 0; i < messages.Length; i++)
@@ -43,8 +42,11 @@ public class ControlHeight : MonoBehaviour {
 		StartCoroutine (Change ());
 	}
 
+
 	IEnumerator Change () {
 		yield return null;
 		_myHeight.localPosition = Vector3.zero;
 	}
+
+  
 }

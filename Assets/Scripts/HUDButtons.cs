@@ -13,30 +13,40 @@ public class HUDButtons : MonoBehaviour {
     public List<Colorization> _colors;
 
     public ControlHeight ct;
+    public ControlHeightEmails ctE;
 
     public TopLabel _header;
 
-    public GameObject container_contacts;
+    public GameObject container_contacts; //são os contatos da parte de mensagens
     public GameObject container_galery;
     public GameObject container_musicPlayer;
     public GameObject container_notes;
     public GameObject container_preferences;
- 
+    public GameObject container_agenda; //são os contatos do telefone
+    public GameObject container_vnus;
+    public GameObject container_email;
+
 
     void Start ()
     {
-        if (_header != null)
+       if (_header != null)
             _header.gameObject.SetActive(false);
-        if (container_galery != null)
+       if (container_galery != null)
             container_galery.SetActive(false);
-        if (container_contacts != null)
+       if (container_contacts != null)
             container_contacts.SetActive(false);
        if (container_musicPlayer != null)
             container_musicPlayer.SetActive(false);
-        if (container_notes != null)
+       if (container_notes != null)
             container_notes.SetActive(false);
        if (container_preferences != null)
             container_preferences.SetActive(false);
+       if (container_vnus != null)
+            container_vnus.SetActive(false);
+       if (container_email != null)
+            container_email.SetActive(false);
+       if (container_agenda != null)
+            container_agenda.SetActive(false);
     }
 
     public void CloseApp (int appToClose)
@@ -50,27 +60,47 @@ public class HUDButtons : MonoBehaviour {
                     return;
                 container_contacts.SetActive(false);
                 break;
+
             case 1:
                 if (container_notes == null)
                     return;
                 container_notes.SetActive(false);
                 break;
+
             case 2:
-            
+                if (container_musicPlayer == null)
+                    return;
+                container_musicPlayer.SetActive(false);
+                break;
+
             case 3:
-             
+                if (container_preferences == null)
+                    return;
+                container_preferences.SetActive(false);
                 break;
+
             case 4:
-               
+                if (container_galery == null)
+                    return;
+                container_galery.SetActive(false);             
                 break;
+
             case 5:
-
+                if (container_email == null)
+                    return;
+                container_email.SetActive(false);
                 break;
+
             case 6:
-
+                if (container_vnus == null)
+                    return;
+                container_vnus.SetActive(false);
                 break;
-            case 7:
 
+            case 7:
+                if (container_agenda == null)
+                    return;
+                container_agenda.SetActive(false);
                 break;
 
             default:
@@ -85,7 +115,6 @@ public class HUDButtons : MonoBehaviour {
 
     public void Messages ()
     {
-
         _header.gameObject.SetActive(true);
         _header._name.text = "Mensagens";
         _header._image.color = _colors.Find(x => x._name == "MessagesHeader_Color")._color;
@@ -106,9 +135,10 @@ public class HUDButtons : MonoBehaviour {
     {
         _header.gameObject.SetActive(true);
         _header._name.text = "Music Player";
+        _header._image.color = _colors.Find(x => x._name == "MusicPlayerHeader_Color")._color;
         _header._backButton.onClick.RemoveAllListeners();
         _header._backButton.onClick.AddListener(delegate {
-            CloseApp(4);
+            CloseApp(2);
         });
 
         if (container_musicPlayer == null)
@@ -121,9 +151,10 @@ public class HUDButtons : MonoBehaviour {
     {
         _header.gameObject.SetActive(true);
         _header._name.text = "Preferencias";
+        _header._image.color = _colors.Find(x => x._name == "PreferencesHeader_Color")._color;
         _header._backButton.onClick.RemoveAllListeners();
         _header._backButton.onClick.AddListener(delegate {
-            CloseApp(2);
+            CloseApp(3);
         });
 
         if (container_preferences == null)
@@ -152,9 +183,10 @@ public class HUDButtons : MonoBehaviour {
     {
         _header.gameObject.SetActive(true);
         _header._name.text = "Galeria";
+        _header._image.color = _colors.Find(x => x._name == "GaleryHeader_Color")._color;
         _header._backButton.onClick.RemoveAllListeners();
         _header._backButton.onClick.AddListener(delegate {
-            CloseApp(3);
+            CloseApp(4);
         });
 
         if (container_galery == null)
@@ -163,6 +195,55 @@ public class HUDButtons : MonoBehaviour {
         container_galery.SetActive(true);
     }
 
+    public void Vnus()
+    {
+        _header.gameObject.SetActive(true);
+        _header._name.text = "Vnus";
+        _header._image.color = _colors.Find(x => x._name == "VnusHeader_Color")._color;
+        _header._backButton.onClick.RemoveAllListeners();
+        _header._backButton.onClick.AddListener(delegate {
+            CloseApp(6);
+        });
+
+        if (container_vnus == null)
+            return;
+
+        container_vnus.SetActive(true);
+    }
+
+    public void Agenda()
+    {
+        _header.gameObject.SetActive(true);
+        _header._name.text = "Contacts";
+        _header._image.color = _colors.Find(x => x._name == "AgendaHeader_Color")._color;
+        _header._backButton.onClick.RemoveAllListeners();
+        _header._backButton.onClick.AddListener(delegate {
+            CloseApp(7);
+        });
+
+        if (container_agenda == null)
+            return;
+
+        container_agenda.SetActive(true);
+    }
+
+    public void Email()
+    {
+        _header.gameObject.SetActive(true);
+        _header._name.text = "Email";
+        _header._image.color = _colors.Find(x => x._name == "EmailHeader_Color")._color;
+        _header._backButton.onClick.RemoveAllListeners();
+        _header._backButton.onClick.AddListener(delegate {
+            CloseApp(5);
+        });
+
+        if (container_email == null)
+            return;
+
+        container_email.SetActive(true);
+
+        ctE.ChangeEmailHeight();
+    }
 
     #endregion
 }
